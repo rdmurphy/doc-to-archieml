@@ -6,6 +6,7 @@
   "types": "types.d.ts",
   "scripts": {
     "git-pre-commit": "precise-commits",
+    "release": "np",
     "test": "mocha --timeout 3000 tests/test.js"
   },
   "repository": {
@@ -34,6 +35,7 @@
     "@zeit/git-hooks": "^0.1.4",
     "googleapis": ">=37.1.0",
     "mocha": "^6.0.2",
+    "np": "*",
     "precise-commits": "^1.0.2",
     "prettier": "^1.16.4"
   },
