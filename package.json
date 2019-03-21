@@ -6,7 +6,7 @@
   "types": "types.d.ts",
   "scripts": {
     "git-pre-commit": "precise-commits",
-    "test": "mocha tests/test.js"
+    "test": "mocha --timeout 3000 tests/test.js"
   },
   "repository": {
     "type": "git",
