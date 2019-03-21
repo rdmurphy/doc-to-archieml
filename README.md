@@ -8,7 +8,7 @@
   <a href="https://packagephobia.now.sh/result?p=@newswire/doc-to-archieml"><img src="https://badgen.net/packagephobia/install/@newswire/doc-to-archieml" alt="install size"></a>
 </p>
 
-`@newswire/doc-to-archieml` is a simple wrapper around the [Google Docs API](https://developers.google.com/docs/api/) and [ArchieML](http://archieml.org) for easily converting the contents of a Google Doc into a ArchieML-produced data structure.
+`@newswire/doc-to-archieml` is a simple wrapper around the [Google Docs API](https://developers.google.com/docs/api/) and [ArchieML](http://archieml.org) for converting the contents of a Google Doc into a ArchieML-produced data structure.
 
 ## Key features
 
@@ -152,7 +152,7 @@ After making any changes, you'll need to run the tests. But this is a little tri
 
 First make a copy of the two test doc files:
 
-[Click here to make a copy of the basic test doc file](https://docs.google.com/document/d/1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc/copy)  
+[Click here to make a copy of the basic test doc file](https://docs.google.com/document/d/1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc/copy)
 [Click here to make a copy of the extensions test doc file](https://docs.google.com/document/d/1_v0gAswpNnGnDqAx7cU_1bFEK8J7fi8EBvfKvgGZubc/copy)
 
 Once you have both files, you'll need to get their IDs and set the correct environment variables so the test runner finds them. To get the IDs **look at the URLs of the files** in your browser - it is the long string of random characters and numbers near the end.
