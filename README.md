@@ -12,17 +12,19 @@
 
 ## Key features
 
-- ⚙️ Produces identical output to **[ArchieML's example Google Drive export method](https://github.com/newsdev/archieml-js/tree/master#using-with-google-documents)** without the use of an HTML parser
-- 👩‍🔧 Does not prescribe any rules for authenticating with Google — **use the authenticated Google API instance, Google Docs client or [authentication method](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization) you are already using**
+- ⚙️ Produces identical output to **[ArchieML's example Google Drive export method](https://github.com/newsdev/archieml-js/tree/master#using-with-google-documents)** (including support for converting links to `<a>` tags) without the use of an HTML parser
+- 👩‍🔧 Does not expect any particular method of authenticating with Google — **use the authenticated Google API instance, Google Docs client or [authentication method](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization) you are already using**
 
 ## Installation
 
-`@newswire/doc-to-archieml` is available via `npm`.
+`@newswire/doc-to-archieml` requires a version of Node.js **8 or higher**.
+
+`@newswire/doc-to-archieml` is available via `npm`. It also requires a peer dependency of [`googleapis`](https://github.com/googleapis/google-api-nodejs-client) `>=37.1.0` - this is when Google Docs API support was added to the official Google library. (If you're using `googleapis` for anything else, you may already have it! Just make sure it's a current enough version.)
 
 ```sh
-npm install --save-dev @newswire/doc-to-archieml
+npm install --save-dev @newswire/doc-to-archieml googleapis@">=37.1.0"
 # or
-yarn add --dev @newswire/doc-to-archieml
+yarn add --dev @newswire/doc-to-archieml googleapis@">=37.1.0"
 ```
 
 ## Usage
@@ -31,15 +33,33 @@ yarn add --dev @newswire/doc-to-archieml
 
 ```js
 const { docToArchieML } = require('@newswire/doc-to-archieml');
+const { google } = require('googleapis');
+
+async function main() {
+  // this method looks for the GCLOUD_PROJECT and GOOGLE_APPLICATION_CREDENTIALS
+  // environment variables to establish authentication
+  const auth = await google.auth.getClient({
+    scopes: ['https://www.googleapis.com/auth/documents.readonly'],
+  });
+
+  // pass in the valid authentication and ID of the document you want to process
+  const results = await docToArchieML({ documentId: '...', auth });
+
+  console.log(results); // `results` is your ArchieML-produced JavaScript object
+}
+
+main().catch(console.error);
 ```
 
-`docToArchieML` only has one required parameter — `documentId`. But authentication with the Google API can be handled in one of three ways:
+## Authentication
 
-### Passing authentication
+`docToArchieML` only has one always required parameter — `documentId`. But the authentication you provide with the Google API can be handled in one of three ways:
+
+### 1) Passing authentication
 
 `docToArchieML` doesn't limit authentication to only OAuth2 (although it certainly supports it!) and will accept any authenticated client that the Google Docs API supports.
 
-After establishing authentication [using one of the methods](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization) supported by `google-api-nodejs-client`, you can pass this auth directly to `docToArchieML` and it'll handle the rest.
+After establishing authentication [using one of the methods](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization) supported by `googleapis`, you can pass this auth directly to `docToArchieML` and it'll handle the rest.
 
 ```js
 const { docToArchieML } = require('@newswire/doc-to-archieml');
@@ -61,9 +81,9 @@ main().catch(console.error);
 
 > (This example uses the [service-to-service authentication](https://github.com/googleapis/google-api-nodejs-client#service-to-service-authentication) method.)
 
-### Passing an authenticated Google Docs API client
+### 2) Passing an authenticated Google Docs API client
 
-Maybe you're already working with the Google Docs API and have already set up an authenticated instance of the Google Docs API client. `docToArchieML` will accept that!
+Maybe you've been working with the Google Docs API and have already set up an authenticated instance of the Google Docs API client that has access to the docs you'd like to work with. `docToArchieML` will accept that and use it!
 
 ```js
 const { docToArchieML } = require('@newswire/doc-to-archieml');
@@ -91,9 +111,9 @@ main().catch(console.error);
 
 > (This example uses the [service-to-service authentication](https://github.com/googleapis/google-api-nodejs-client#service-to-service-authentication) method.)
 
-### Passing an authenticated Google APIs instance
+### 3) Passing an authenticated Google APIs instance
 
-Maybe you're using multiple Google API services and are [setting authentication across all Google APIs globally](https://github.com/googleapis/google-api-nodejs-client#setting-global-or-service-level-auth). `docToArchieML` can accept the authenticated `googleApisInstance` and use that to create the Google Docs API client internally, no additional passing of `auth` necessary.
+Maybe you've been using multiple Google API services and have [set authentication across all Google APIs globally](https://github.com/googleapis/google-api-nodejs-client#setting-global-or-service-level-auth). `docToArchieML` can accept the authenticated `googleApisInstance` and use that to create the Google Docs API client - no passing of `auth` necessary.
 
 ```js
 const { docToArchieML } = require('@newswire/doc-to-archieml');
@@ -117,8 +137,6 @@ main().catch(console.error);
 ```
 
 > (This example uses the [service-to-service authentication](https://github.com/googleapis/google-api-nodejs-client#service-to-service-authentication) method.)
-
-## API
 
 ## License
 
