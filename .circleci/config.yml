@@ -9,6 +9,12 @@ commands:
     steps:
       - checkout
 
+      - run:
+        name: Setup Google credentials
+        command: |
+          echo ${GOOGLE_SERVICE_CREDENTIALS} > ${HOME}/gcp-credentials.json
+          echo 'export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcp-credentials.json' >> $BASH_ENV
+
       # Download and cache dependencies
       - restore_cache:
           keys:
