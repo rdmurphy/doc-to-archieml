@@ -157,7 +157,7 @@ First make a copy of the two test doc files:
 
 Once you have both files, you'll need to get their IDs and set the correct environment variables so the test runner finds them. To get the IDs **look at the URLs of the files** in your browser - it is the long string of random characters and numbers near the end.
 
-https://docs.google.com/document/d/**1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc**/edit
+https://<span></span>docs.google.com/document/d/**1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc**/edit
 
 Set the following environmental variables in your shell:
 
