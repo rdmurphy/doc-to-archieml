@@ -2,6 +2,7 @@
   @newswire/doc-to-archieml
 </h1>
 <p align="center">
+  <a href="https://circleci.com/gh/rdmurphy/doc-to-archieml"><img src="https://badgen.net/circleci/github/rdmurphy/doc-to-archieml/"></a>
   <a href="https://www.npmjs.org/package/@newswire/doc-to-archieml"><img src="https://badgen.net/npm/v/@newswire/doc-to-archieml" alt="npm"></a>
   <a href="https://david-dm.org/rdmurphy/doc-to-archieml"><img src="https://badgen.net/david/dep/rdmurphy/doc-to-archieml" alt="dependencies"></a>
   <a href="https://packagephobia.now.sh/result?p=@newswire/doc-to-archieml"><img src="https://badgen.net/packagephobia/install/@newswire/doc-to-archieml" alt="install size"></a>
