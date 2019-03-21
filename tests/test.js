@@ -5,8 +5,12 @@ const { docToArchieML } = require('../');
 const expectedBasicOutput = require('./expected/basic');
 const expectedExtensionsOutput = require('./expected/extensions');
 
-const basicDocumentId = '1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc';
-const extensionsDocumentId = '1_v0gAswpNnGnDqAx7cU_1bFEK8J7fi8EBvfKvgGZubc';
+const basicDocumentId =
+  process.env.BASIC_DOCUMENT_ID ||
+  '1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc';
+const extensionsDocumentId =
+  process.env.EXTENSIONS_DOCUMENT_ID ||
+  '1_v0gAswpNnGnDqAx7cU_1bFEK8J7fi8EBvfKvgGZubc';
 
 describe('@newswire/doc-to-archieml', () => {
   let auth;

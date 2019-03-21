@@ -53,7 +53,9 @@ main().catch(console.error);
 
 ## Authentication
 
-`docToArchieML` only has one always required parameter — `documentId`. But the authentication you provide with the Google API can be handled in one of three ways:
+`docToArchieML` only has one always required parameter — `documentId`. But the authentication you provide with the Google API can be handled in one of three ways detailed below.
+
+_Acquiring_ this authentication is beyond the scope of this project's documentation, but two good starting points are [Google's official Node.js quickstart guide for the Google Docs API](https://developers.google.com/docs/api/quickstart/nodejs) and the [client library's authentication documentation](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization).
 
 ### 1) Passing authentication
 
@@ -137,6 +139,48 @@ main().catch(console.error);
 ```
 
 > (This example uses the [service-to-service authentication](https://github.com/googleapis/google-api-nodejs-client#service-to-service-authentication) method.)
+
+## Contributing
+
+First clone the repo to your local device and install the dependencies.
+
+```sh
+npm install
+```
+
+After making any changes, you'll need to run the tests. But this is a little tricky because we perform an integration test against live Google Doc files. To make the tests work for you locally, you'll need to do a few extra steps.
+
+First make a copy of the two test doc files:
+
+[Click here to make a copy of the basic test doc file](https://docs.google.com/document/d/1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc/copy)  
+[Click here to make a copy of the extensions test doc file](https://docs.google.com/document/d/1_v0gAswpNnGnDqAx7cU_1bFEK8J7fi8EBvfKvgGZubc/copy)
+
+Once you have both files, you'll need to get their IDs and set the correct environment variables so the test runner finds them. To get the IDs **look at the URLs of the files** in your browser - it is the long string of random characters and numbers near the end.
+
+https://docs.google.com/document/d/**1coln1etP5rT1MqmNtRT7lToGtCi1EAsDVzC5aq0LsIc**/edit
+
+Set the following environmental variables in your shell:
+
+```sh
+export BASIC_DOCUMENT_ID=<basic_doc_id>
+export EXTENSIONS_DOCUMENT_ID=<extensions_doc_id>
+```
+
+Next you'll need to create a service account (or use an existing one) and give it access to your two copies of the docs. Typically this is done by sharing those files with the email of the service account in the document sharing interface.
+
+Finally, we need to tell the test runner how to use the service account authentication to communicate with the API. The best method for doing this is the [service-to-service authentication method](https://github.com/googleapis/google-api-nodejs-client#service-to-service-authentication). Typically this means setting the `GOOGLE_APPLICATION_CREDENTIALS` environmental variable and pointing it at the location of your service account authentication JSON file.
+
+```sh
+export GOOGLE_APPLICATION_CREDENTIALS=<path_to_json_file>
+```
+
+And... now you're ready to go! You should be able to run the tests.
+
+```sh
+npm test
+```
+
+If anyone has any suggestions on how to make this a smoother process, please let me know!
 
 ## License
 
