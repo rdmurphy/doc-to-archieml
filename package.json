@@ -4,6 +4,11 @@
   "description": "Convert an ArchieML-formatted Google Doc directly into usable JSON using the Google Docs API.",
   "main": "index.js",
   "types": "types.d.ts",
+  "files": [
+    "index.js",
+    "utils.js",
+    "types.d.ts"
+  ],
   "scripts": {
     "git-pre-commit": "precise-commits",
     "release": "np",
