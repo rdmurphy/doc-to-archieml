@@ -17,14 +17,12 @@
 
 ## Installation
 
-`@newswire/doc-to-archieml` requires a version of Node.js **8 or higher**.
-
-`@newswire/doc-to-archieml` is available via `npm`. It also requires a peer dependency of [`googleapis`](https://github.com/googleapis/google-api-nodejs-client) `>=37.1.0` - this is when Google Docs API support was added to the official Google library. (If you're using `googleapis` for anything else, you may already have it! Just make sure it's a current enough version.)
+`@newswire/doc-to-archieml` requires a version of Node.js **8 or higher**. It is available via `npm`.
 
 ```sh
-npm install --save-dev @newswire/doc-to-archieml googleapis@">=37.1.0"
+npm install --save-dev @newswire/doc-to-archieml
 # or
-yarn add --dev @newswire/doc-to-archieml googleapis@">=37.1.0"
+yarn add --dev @newswire/doc-to-archieml
 ```
 
 ## Usage
