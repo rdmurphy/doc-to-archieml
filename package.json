@@ -34,18 +34,12 @@
     "googleapis": "^39.2.0"
   },
   "devDependencies": {
+    "@newswire/prettier-config": "^1.0.0",
     "@zeit/git-hooks": "^0.1.4",
     "mocha": "^6.1.4",
     "np": "^5.0.0",
     "precise-commits": "^1.0.2",
     "prettier": "^1.17.0"
   },
-  "prettier": {
-    "bracketSpacing": true,
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5"
-  }
+  "prettier": "@newswire/prettier-config"
 }
