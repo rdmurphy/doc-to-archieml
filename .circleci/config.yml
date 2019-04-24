@@ -52,6 +52,11 @@ jobs:
       - image: circleci/node:11
     steps:
       - run_test
+  node12:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - run_test
 
 workflows:
   version: 2
@@ -60,3 +65,4 @@ workflows:
       - node8
       - node10
       - node11
+      - node12
