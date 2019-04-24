@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "git-pre-commit": "precise-commits",
-    "release": "np",
+    "release": "np --no-yarn",
     "test": "mocha --timeout 5000 tests/test.js"
   },
   "repository": {
