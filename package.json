@@ -11,7 +11,7 @@
   "scripts": {
     "git-pre-commit": "precise-commits",
     "release": "np",
-    "test": "mocha --timeout 3000 tests/test.js"
+    "test": "mocha --timeout 5000 tests/test.js"
   },
   "repository": {
     "type": "git",
@@ -31,14 +31,14 @@
   "homepage": "https://github.com/rdmurphy/doc-to-archieml#readme",
   "dependencies": {
     "archieml": "^0.4.2",
-    "googleapis": ">=37.1.0"
+    "googleapis": "^39.2.0"
   },
   "devDependencies": {
     "@zeit/git-hooks": "^0.1.4",
-    "mocha": "^6.0.2",
-    "np": "*",
+    "mocha": "^6.1.4",
+    "np": "^5.0.0",
     "precise-commits": "^1.0.2",
-    "prettier": "^1.16.4"
+    "prettier": "^1.17.0"
   },
   "prettier": {
     "bracketSpacing": true,
