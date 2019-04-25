@@ -143,7 +143,7 @@ main().catch(console.error);
 First clone the repo to your local device and install the dependencies.
 
 ```sh
-npm install
+yarn
 ```
 
 After making any changes, you'll need to run the tests. But this is a little tricky because we perform an integration test against live Google Doc files. To make the tests work for you locally, you'll need to do a few extra steps.
