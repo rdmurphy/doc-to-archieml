@@ -54,7 +54,7 @@ jobs:
       - run_test
   node12:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:12
     steps:
       - run_test
 
