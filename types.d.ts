@@ -26,6 +26,6 @@ declare function docToArchieML({
   client,
   documentId,
   google,
-}: DocToArchieMLOptions): Promise<object>;
+}: DocToArchieMLOptions): Promise<unknown>;
 
 export { docToArchieML };

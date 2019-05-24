@@ -25,6 +25,22 @@ npm install --save-dev @newswire/doc-to-archieml
 yarn add --dev @newswire/doc-to-archieml
 ```
 
+## Table of contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Usage](#usage)
+- [Authentication](#authentication)
+  - [1) Passing authentication](#1-passing-authentication)
+  - [2) Passing an authenticated Google Docs API client](#2-passing-an-authenticated-google-docs-api-client)
+  - [3) Passing an authenticated Google APIs instance](#3-passing-an-authenticated-google-apis-instance)
+- [Contributing](#contributing)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Usage
 
 `@newswire/doc-to-archieml` exports a single function - `docToArchieML`.
@@ -51,7 +67,7 @@ main().catch(console.error);
 
 ## Authentication
 
-`docToArchieML` has one required parameter — `documentId`. But the authentication you provide with the Google API can be handled in one of three ways detailed below.
+`docToArchieML` has one required parameter — `documentId`. But the authentication you provide with the Google API may be handled in one of the three ways detailed below.
 
 _Acquiring_ this authentication is beyond the scope of this project's documentation, but two good starting points are [Google's official Node.js quickstart guide for the Google Docs API](https://developers.google.com/docs/api/quickstart/nodejs) and the [client library's authentication documentation](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization).
 
@@ -175,7 +191,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=<path_to_json_file>
 And... now you're ready to go! You should be able to run the tests.
 
 ```sh
-npm test
+yarn test
 ```
 
 If anyone has any suggestions on how to make this a smoother process, please let me know!

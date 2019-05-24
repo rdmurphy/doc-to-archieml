@@ -1,7 +1,7 @@
 {
   "name": "@newswire/doc-to-archieml",
   "version": "0.0.0",
-  "description": "Convert an ArchieML-formatted Google Doc directly into usable JSON using the Google Docs API.",
+  "description": "Convert an ArchieML-formatted Google Doc directly into usable data using the Google Docs API.",
   "main": "index.js",
   "types": "types.d.ts",
   "files": [
@@ -9,6 +9,7 @@
     "types.d.ts"
   ],
   "scripts": {
+    "docs": "doctoc README.md --github",
     "git-pre-commit": "precise-commits",
     "release": "np",
     "test": "mocha --timeout 5000 tests/test.js"
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@newswire/prettier-config": "^1.0.0",
     "@zeit/git-hooks": "^0.1.4",
+    "doctoc": "^1.4.0",
     "mocha": "^6.1.4",
     "np": "^5.0.0",
     "precise-commits": "^1.0.2",
