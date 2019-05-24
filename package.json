@@ -11,7 +11,8 @@
   "scripts": {
     "docs": "doctoc README.md --github",
     "git-pre-commit": "precise-commits",
-    "release": "np",
+    "prerelease": "yarn test",
+    "release": "git commit -am \"$npm_package_version\" && git tag $npm_package_version && git push && git push --tags && yarn publish",
     "test": "mocha --timeout 5000 tests/test.js"
   },
   "repository": {
@@ -39,7 +40,6 @@
     "@zeit/git-hooks": "^0.1.4",
     "doctoc": "^1.4.0",
     "mocha": "^6.1.4",
-    "np": "^5.0.2",
     "precise-commits": "^1.0.2",
     "prettier": "^1.17.1"
   },
