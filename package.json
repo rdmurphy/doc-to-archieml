@@ -12,7 +12,7 @@
     "docs": "doctoc README.md --github",
     "git-pre-commit": "precise-commits",
     "prerelease": "yarn test",
-    "release": "git commit -am \"$npm_package_version\" && git tag $npm_package_version && git push && git push --tags && yarn publish",
+    "release": "git push && git push --tags && yarn publish",
     "test": "mocha --timeout 5000 tests/test.js"
   },
   "repository": {
