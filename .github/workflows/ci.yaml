@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Node.js v${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [10, 12, 14]
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js v${{ matrix.node-version }}
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: npm install
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+        env:
+          GOOGLE_SERVICE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_CREDENTIALS }}
