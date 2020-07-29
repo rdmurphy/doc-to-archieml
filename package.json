@@ -13,7 +13,8 @@
     "git-pre-commit": "precise-commits",
     "prerelease": "yarn test",
     "release": "git push && git push --tags && yarn publish",
-    "test": "mocha --timeout 5000 tests/test.js"
+    "test": "node tests/test.js",
+    "coverage": "nyc --reporter text --reporter lcovonly npm run test"
   },
   "repository": {
     "type": "git",
@@ -39,9 +40,10 @@
     "@newswire/prettier-config": "^1.0.0",
     "@zeit/git-hooks": "^0.1.4",
     "doctoc": "^1.4.0",
-    "mocha": "^7.0.0",
+    "nyc": "^15.1.0",
     "precise-commits": "^1.0.2",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "uvu": "^0.3.0"
   },
   "prettier": "@newswire/prettier-config"
 }

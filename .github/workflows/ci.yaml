@@ -39,4 +39,4 @@ jobs:
           export_default_credentials: true
 
       - name: Run tests
-        run: npm test
+        run: npm run coverage
