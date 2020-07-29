@@ -32,7 +32,12 @@ jobs:
       - name: npm install
         run: npm ci
 
-      - name: Run tests
-        run: npm test
+      - name: set up secrets file for test
         env:
           GOOGLE_SERVICE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_CREDENTIALS }}
+        run: |
+          echo "$GOOGLE_SERVICE_CREDENTIALS" > ${HOME}/gcp-credentials.json
+          export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcp-credentials.json
+
+      - name: Run tests
+        run: npm test
