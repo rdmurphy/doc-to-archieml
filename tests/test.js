@@ -1,5 +1,5 @@
 const { strict: assert } = require('assert');
-const { google } = require('googleapis');
+const { GoogleAuth } = require('google-auth-library');
 const { docToArchieML } = require('../');
 
 const expectedBasicOutput = require('./expected/basic');
@@ -13,18 +13,20 @@ const extensionsDocumentId =
   '1_v0gAswpNnGnDqAx7cU_1bFEK8J7fi8EBvfKvgGZubc';
 
 describe('@newswire/doc-to-archieml', () => {
-  let auth;
+  let client;
 
   before(async () => {
-    auth = await google.auth.getClient({
+    const auth = new GoogleAuth({
       scopes: ['https://www.googleapis.com/auth/documents.readonly'],
     });
+
+    client = await auth.getClient();
   });
 
   it('should return a valid JavaScript object of basic ArchieML data', async () => {
     const actual = await docToArchieML({
       documentId: basicDocumentId,
-      auth,
+      client,
     });
 
     assert.deepStrictEqual(actual, expectedBasicOutput);
@@ -33,9 +35,17 @@ describe('@newswire/doc-to-archieml', () => {
   it('should return a valid JavaScript object of extended ArchieML data', async () => {
     const actual = await docToArchieML({
       documentId: extensionsDocumentId,
-      auth,
+      client,
     });
 
     assert.deepStrictEqual(actual, expectedExtensionsOutput);
+  });
+
+  it('should be able to set up a minimal client if one is not passed', async () => {
+    const actual = await docToArchieML({
+      documentId: basicDocumentId,
+    });
+
+    assert.deepStrictEqual(actual, expectedBasicOutput);
   });
 });

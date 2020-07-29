@@ -1,31 +1,13 @@
-import { GoogleApis, docs_v1 } from 'googleapis';
+import { JWT } from 'google-auth-library';
 
-export interface BaseDocToArchieMLOptions {
-  documentId: docs_v1.Params$Resource$Documents$Get['documentId'];
+export interface DocToArchieMLOptions {
+  client?: JWT;
+  documentId: string;
 }
-
-export interface AuthDocToArchieMLOptions extends BaseDocToArchieMLOptions {
-  auth: docs_v1.Params$Resource$Documents$Get['auth'];
-}
-
-export interface ClientDocToArchieMLOptions extends BaseDocToArchieMLOptions {
-  client: docs_v1.Docs;
-}
-
-export interface GoogleDocToArchieMLOptions extends BaseDocToArchieMLOptions {
-  google: GoogleApis;
-}
-
-export type DocToArchieMLOptions =
-  | AuthDocToArchieMLOptions
-  | ClientDocToArchieMLOptions
-  | GoogleDocToArchieMLOptions;
 
 declare function docToArchieML({
-  auth,
   client,
   documentId,
-  google,
 }: DocToArchieMLOptions): Promise<unknown>;
 
 export { docToArchieML };
