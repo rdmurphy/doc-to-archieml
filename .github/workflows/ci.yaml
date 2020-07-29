@@ -32,12 +32,11 @@ jobs:
       - name: npm install
         run: npm ci
 
-      - name: set up secrets file for test
-        env:
-          GOOGLE_SERVICE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_CREDENTIALS }}
-        run: |
-          echo "$GOOGLE_SERVICE_CREDENTIALS" > ${HOME}/gcp-credentials.json
-          export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcp-credentials.json
+      - name: Set up Google auth
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GOOGLE_SERVICE_CREDENTIALS }}
+          export_default_credentials: true
 
       - name: Run tests
         run: npm test
