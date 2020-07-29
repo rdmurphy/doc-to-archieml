@@ -2,7 +2,7 @@
 const { load } = require('archieml');
 const { GoogleAuth } = require('google-auth-library');
 
-function readParagraphElement(element) {
+function readParagraphElement(element, formatter) {
   // pull out the text
   const textRun = element.textRun;
 
@@ -11,17 +11,8 @@ function readParagraphElement(element) {
     // sometimes the content isn't there, and if so, make it an empty string
     const content = textRun.content || '';
 
-    // step through optional text styles to check for an associated URL
-    if (!textRun.textStyle) return content;
-    if (!textRun.textStyle.link) return content;
-    if (!textRun.textStyle.link.url) return content;
-
-    // if we got this far there's a URL key, grab it...
-    const url = textRun.textStyle.link.url;
-
-    // ...but sometimes that's empty too
-    if (url) {
-      return `<a href="${url}">${content}</a>`;
+    if (textRun.textStyle) {
+      return formatter(content, textRun.textStyle);
     } else {
       return content;
     }
@@ -30,7 +21,7 @@ function readParagraphElement(element) {
   }
 }
 
-function readElements(document) {
+function readElements(document, formatter) {
   // prepare the text holder
   let text = '';
 
@@ -59,13 +50,21 @@ function readElements(document) {
           const prefix = needsBullet && isFirstValue ? '* ' : '';
 
           // concat the text
-          text += `${prefix}${readParagraphElement(value)}`;
+          text += `${prefix}${readParagraphElement(value, formatter)}`;
         });
       }
     }
   });
 
   return text;
+}
+
+function defaultFormatter(content, textStyle) {
+  if (textStyle.link && textStyle.link.url) {
+    return `<a href="${textStyle.link.url}">${content}</a>`;
+  }
+
+  return content;
 }
 
 async function docToArchieML({ client, documentId }) {
@@ -85,7 +84,7 @@ async function docToArchieML({ client, documentId }) {
   const { data } = await client.request({ url });
 
   // convert the doc's content to text ArchieML will understand
-  const text = readElements(data);
+  const text = readElements(data, defaultFormatter);
 
   // pass text to ArchieML and return results
   return load(text);
