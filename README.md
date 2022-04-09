@@ -2,7 +2,7 @@
   @newswire/doc-to-archieml
 </h1>
 <p align="center">
-  [![CI](https://github.com/rdmurphy/doc-to-archieml/actions/workflows/ci.yaml/badge.svg)](https://github.com/rdmurphy/doc-to-archieml/actions/workflows/ci.yaml)
+  <a href="https://github.com/rdmurphy/doc-to-archieml/actions/workflows/ci.yaml"><img src="https://github.com/rdmurphy/doc-to-archieml/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
   <a href="https://www.npmjs.org/package/@newswire/doc-to-archieml"><img src="https://badgen.net/npm/v/@newswire/doc-to-archieml" alt="npm"></a>
   <a href="https://packagephobia.now.sh/result?p=@newswire/doc-to-archieml"><img src="https://badgen.net/packagephobia/install/@newswire/doc-to-archieml" alt="install size"></a>
 </p>
