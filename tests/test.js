@@ -1,5 +1,5 @@
 const { strict: assert } = require('assert');
-const google = require('@googleapis/docs');
+const { GoogleAuth } = require('google-auth-library');
 const { docToArchieML } = require('../');
 
 const expectedBasicOutput = require('./expected/basic');
@@ -16,7 +16,7 @@ describe('@newswire/doc-to-archieml', () => {
   let auth;
 
   before(async () => {
-    auth = await google.auth.getClient({
+    auth = new GoogleAuth({
       scopes: ['https://www.googleapis.com/auth/documents.readonly'],
     });
   });
