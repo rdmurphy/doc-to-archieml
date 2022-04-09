@@ -1,5 +1,5 @@
 const { strict: assert } = require('assert');
-const { google } = require('googleapis');
+const google = require('@googleapis/docs');
 const { docToArchieML } = require('../');
 
 const expectedBasicOutput = require('./expected/basic');
