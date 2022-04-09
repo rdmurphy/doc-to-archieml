@@ -24,17 +24,17 @@ commands:
 
       - run:
           name: Installing dependencies
-          command: yarn install --frozen-lockfile
+          command: npm ci
 
       - save_cache:
           paths:
-            - ~/.cache/yarn
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+            - ~/.cache/npm
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
       # run tests!
       - run:
           name: Running tests
-          command: yarn test
+          command: npm test
 
 jobs:
   node8:
