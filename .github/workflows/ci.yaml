@@ -26,7 +26,7 @@ jobs:
         run: npm ci
 
       - name: Set up Google auth
-        uses: GoogleCloudPlatform/github-actions/auth@v0
+        uses: google-github-actions/auth@v0
         with:
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
