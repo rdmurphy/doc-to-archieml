@@ -1,6 +1,6 @@
 // packages
 const { load } = require('archieml');
-const { google: googleApisInstance } = require('googleapis');
+const googleApisInstance = require('@googleapis/docs');
 
 function readParagraphElement(element) {
   // pull out the text
