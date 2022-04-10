@@ -32,8 +32,10 @@
   },
   "homepage": "https://github.com/rdmurphy/doc-to-archieml#readme",
   "dependencies": {
-    "archieml": "^0.4.2",
-    "google-auth-library": "^7.14.1"
+    "archieml": "^0.4.2"
+  },
+  "peerDependencies": {
+    "google-auth-library": "1 - 7"
   },
   "devDependencies": {
     "@googleapis/docs": "^0.4.1",

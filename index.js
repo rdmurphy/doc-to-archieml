@@ -1,6 +1,5 @@
 // packages
 const { load } = require('archieml');
-const { GoogleAuth } = require('google-auth-library');
 
 /**
  * @param {import('@googleapis/docs').docs_v1.Schema$ParagraphElement} element
@@ -78,22 +77,11 @@ function readElements(document) {
 
 /**
  *
- * @param {Object} options
- * @param {GoogleAuth} options.auth
- * @param {string} options.documentId
+ * @param {string} documentId
+ * @param {import('google-auth-library').AuthClient} client
  * @returns {unknown}
  */
-async function docToArchieML({ auth, documentId }) {
-  // create an auth if one isn't provided
-  if (!auth) {
-    auth = new GoogleAuth({
-      scopes: ['https://www.googleapis.com/auth/documents.readonly'],
-    });
-  }
-
-  // get an authenticated client
-  const client = await auth.getClient();
-
+async function docToArchieML(documentId, client) {
   // pull the data out of the doc
   const { data } = await client.request({
     url: `https://docs.googleapis.com/v1/documents/${documentId}`,

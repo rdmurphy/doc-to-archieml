@@ -65,7 +65,7 @@ main().catch(console.error);
 
 ## Authentication
 
-`docToArchieML` has one required parameter — `documentId`. But the authentication you provide with the Google API may be handled in one of the three ways detailed below.
+`docToArchieML` has one required parameter — `documentId`. But the authentication you provide with the Google API may be handled in one of the three ways.
 
 _Acquiring_ this authentication is beyond the scope of this project's documentation, but two good starting points are [Google's official Node.js quickstart guide for the Google Docs API](https://developers.google.com/docs/api/quickstart/nodejs) and the [client library's authentication documentation](https://github.com/googleapis/google-api-nodejs-client#authentication-and-authorization).
 
