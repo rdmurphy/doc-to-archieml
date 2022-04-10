@@ -1,6 +1,8 @@
 const { strict: assert } = require('assert');
-const { GoogleAuth } = require('google-auth-library');
 const { docToArchieML } = require('../');
+
+const GOOGLE_AUTH_LIBRARY_VERSION =
+  process.env.GOOGLE_AUTH_LIBRARY_VERSION || '7';
 
 const expectedBasicOutput = require('./expected/basic');
 const expectedExtensionsOutput = require('./expected/extensions');
@@ -16,6 +18,10 @@ describe('@newswire/doc-to-archieml', () => {
   let client;
 
   before(async () => {
+    const { GoogleAuth } = await import(
+      `google-auth-library-${GOOGLE_AUTH_LIBRARY_VERSION}`
+    );
+
     const auth = new GoogleAuth({
       scopes: ['https://www.googleapis.com/auth/documents.readonly'],
     });

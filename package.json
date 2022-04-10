@@ -35,13 +35,16 @@
     "archieml": "^0.4.2"
   },
   "peerDependencies": {
-    "google-auth-library": "1 - 7"
+    "google-auth-library": "5 - 7"
   },
   "devDependencies": {
     "@googleapis/docs": "^0.4.1",
     "@newswire/prettier-config": "^1.0.0",
     "@zeit/git-hooks": "^0.1.4",
     "doctoc": "^2.0.1",
+    "google-auth-library-5": "npm:google-auth-library@^5",
+    "google-auth-library-6": "npm:google-auth-library@^6",
+    "google-auth-library-7": "npm:google-auth-library@^7",
     "mocha": "^8.1.0",
     "precise-commits": "^1.0.2",
     "prettier": "^1.17.1"

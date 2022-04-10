@@ -4,13 +4,14 @@ on: [push]
 
 jobs:
   test:
-    name: Node.js v${{ matrix.node-version }}
+    name: Node.js v${{ matrix.node-version }} + google-auth-library v${{ matrix.google-auth-library-version }}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         node-version: [12, 14, 16]
+        google-auth-library-version: [5, 6, 7]
 
     steps:
       - name: Checkout the repo
@@ -32,3 +33,5 @@ jobs:
 
       - name: Run tests
         run: npm test
+        env:
+          GOOGLE_AUTH_LIBRARY_VERSION: ${{ matrix.google-auth-library-version }}
