@@ -33,7 +33,7 @@
   "homepage": "https://github.com/rdmurphy/doc-to-archieml#readme",
   "dependencies": {
     "archieml": "^0.4.2",
-    "googleapis": "^39.2.0"
+    "googleapis": "^118.0.0"
   },
   "devDependencies": {
     "@newswire/prettier-config": "^1.0.0",
